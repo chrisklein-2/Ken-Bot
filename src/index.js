@@ -30,7 +30,20 @@ client.on('messageCreate', (message) =>{
   }
 
   userInput = message.content.toLowerCase();
-  temp = Math.floor(Math.random()*99);
+  temp = Math.floor(Math.random()*999);
+
+  const date = new Date();
+
+  if(userInput === "ken whats todays date?" || userInput === "ken whats todays date"){
+    if(date.getDate()===28 && date.getMonth()===6){
+      message.reply("Who cares, its Chris' birthday!");
+    }
+    else{
+      message.reply(`${date.getMonth()+1}/${date.getDate()}... not Chris' Birthday`);
+    }
+    return;
+  }
+
 
   if(userInput === "ken what is this" || temp == 93){
     message.reply("its just a wittil bwead");
@@ -45,8 +58,9 @@ client.on('messageCreate', (message) =>{
     return;
   }
 
-  if(userInput === 'twelve ten'){
+  if(userInput === 'twelve ten' || userInput === "12-10" || userInput === "12 10"){
     message.reply('Firehouse to Welcome!');
+    return;
   }
 
   //welcome to firehouse
@@ -74,7 +88,7 @@ client.on('messageCreate', (message) =>{
   }
   
   //ken says hi
-  if((words[0]==='hi' || words[0]==='hello' || words[0]==='hey' || words[0]==='wassup') && words[1]==='ken'){
+  if((words[0]==='hi' || words[0]==='hello' || words[0]==='hey' || words[0]==='wassup') && words[1] === 'ken'){
       message.reply("Hello");
       return;
   }
@@ -89,7 +103,7 @@ client.on('messageCreate', (message) =>{
   //asking ken a question
   if (words[0] === 'ken' && words[1] === 'can'){
       
-      if(words[2]==='you'){
+      if(words[2] === 'you'){
           message.reply('No');
           return;
       }
@@ -103,19 +117,23 @@ client.on('messageCreate', (message) =>{
       }
       
       //choice for switch statement
-      choice = Math.floor(Math.random()*4);
+      choice = Math.floor(Math.random()*3);
       word = words.join(" ");
 
       switch(choice){
+
           case 0:
               message.reply(`When we finish this order you can ${word}.`);
               break;
+          
           case 1:
               message.reply(`If the greensheet is done you can ${word}.`);
               break;
+
           case 2:
               message.reply(`Maybe if you get enough surveys you can ${word}.`);
               break;
+
           case 3:
               message.reply(`If you rotated steamers I can see ${word}ing happening.`);
               break;
@@ -125,13 +143,23 @@ client.on('messageCreate', (message) =>{
   }
   //default answer
 
-  if(words[0]==='ken' && words[1]!=='can'){
-    message.reply("Just do a greensheet");
+  if(words[0] === 'ken' && words[1] !== 'can'){
+    temp = Math.floor(Math.random()*3);
+
+    if(temp === 1){
+      message.reply("Just do a greensheet");
+    }
+    if(temp == 2){
+      message.reply("No... \n     ...\n I love Chris!");
+    }
+    if(temp == 0){
+      message.reply(`${userInput}? \nWe have a little fun here :)`);
+    }
     return;
   }
 
   if(userInput.includes("ken")){
-    message.reply("I don't have anything to say to that.")
+    message.reply(`I don't have anything to say to that.`);
   }
 
 })
