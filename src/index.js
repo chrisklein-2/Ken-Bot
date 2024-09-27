@@ -30,17 +30,20 @@ client.on('messageCreate', (message) =>{
   }
 
   userInput = message.content.toLowerCase();
-  temp = Math.floor(Math.random()*999);
+  temp = Math.floor(Math.random() * 999);
 
   const date = new Date();
 
   if(userInput === "ken whats todays date?" || userInput === "ken whats todays date"){
-    if(date.getDate()===28 && date.getMonth()===6){
+    
+    if(date.getDate() === 28 && date.getMonth() === 6){
       message.reply("Who cares, its Chris' birthday!");
     }
+
     else{
       message.reply(`${date.getMonth()+1}/${date.getDate()}... not Chris' Birthday`);
     }
+
     return;
   }
 
@@ -53,11 +56,17 @@ client.on('messageCreate', (message) =>{
   //splits the input to check individual words
   words = userInput.split(" ");
 
+  if(userInput.includes("roblox")){
+    message.reply("Shut up about Roblox!\n -Chris");
+    return;
+  }
+
   if(userInput === "i'm going to the bathroom" || userInput === 'im going to the bathroom'){
     message.reply("Check it while you're in there");
     return;
   }
 
+  //uno reverse card
   if(userInput === 'twelve ten' || userInput === "12-10" || userInput === "12 10"){
     message.reply('Firehouse to Welcome!');
     return;
@@ -67,6 +76,11 @@ client.on('messageCreate', (message) =>{
   if(userInput === '10-12' || userInput === '10 12' || userInput === 'ten twelve'){
       message.reply('Welcome to Firehouse!');
       return;
+  }
+
+  if(userInput === '10 4' || userInput === 'ten four' || userInput === '10-4'){
+    message.reply("Welcome to... oh wait, nevermind");
+    return;
   }
 
   //mark
@@ -88,7 +102,7 @@ client.on('messageCreate', (message) =>{
   }
   
   //ken says hi
-  if((words[0]==='hi' || words[0]==='hello' || words[0]==='hey' || words[0]==='wassup') && words[1] === 'ken'){
+  if((words[0] === 'hi' || words[0] === 'hello' || words[0] === 'hey' || words[0] === 'wassup') && words[1] === 'ken'){
       message.reply("Hello");
       return;
   }
@@ -117,7 +131,7 @@ client.on('messageCreate', (message) =>{
       }
       
       //choice for switch statement
-      choice = Math.floor(Math.random()*3);
+      choice = Math.floor(Math.random() * 3);
       word = words.join(" ");
 
       switch(choice){
@@ -141,16 +155,17 @@ client.on('messageCreate', (message) =>{
       }
       return;
   }
-  //default answer
+
+  //default answers
 
   if(words[0] === 'ken' && words[1] !== 'can'){
-    temp = Math.floor(Math.random()*3);
+    temp = Math.floor(Math.random() * 3);
 
-    if(temp === 1){
+    if(temp == 1){
       message.reply("Just do a greensheet");
     }
     if(temp == 2){
-      message.reply("No... \n     ...\n I love Chris!");
+      message.reply("No... \n     ...\nI love Chris!");
     }
     if(temp == 0){
       message.reply(`${userInput}? \nWe have a little fun here :)`);
